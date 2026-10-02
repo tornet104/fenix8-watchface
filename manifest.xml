@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<iq:manifest version="3" xmlns:iq="http://www.garmin.com/xml/connectiq">
+
+    <iq:application
+        id="d2532167753a411d9535efeec3405c0a"
+        type="watchface"
+        name="@Strings.AppName"
+        entry="Fenix8WatchFaceApp"
+        launcherIcon="@Drawables.LauncherIcon"
+        minApiLevel="6.0.0">
+
+        <iq:products>
+            <iq:product id="fenix8solar51mm"/>
+        </iq:products>
+
+        <iq:permissions/>
+
+        <iq:languages>
+            <iq:language>eng</iq:language>
+        </iq:languages>
+
+        <iq:barrels/>
+
+    </iq:application>
+
+</iq:manifest>
