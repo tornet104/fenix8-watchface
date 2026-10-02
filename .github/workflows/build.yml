@@ -1,0 +1,33 @@
+name: Build Garmin Watch Face
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Restore developer key
+        run: echo "${{ secrets.CIQ_DEVELOPER_KEY }}" | base64 --decode > developer_key.der
+
+      - name: Build watch face
+        uses: blackshadev/garmin-connectiq-build-action@9.2.0
+        with:
+          projectJungle: ./monkey.jungle
+          developerKey: ./developer_key.der
+          outputPath: ./out/fenix8-watchface.prg
+          device: fenix8solar51mm
+          typeCheck: '0'
+
+      - name: Upload watch face
+        uses: actions/upload-artifact@v4
+        with:
+          name: fenix8-watchface
+          path: ./out/fenix8-watchface.prg
